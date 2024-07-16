@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: frame_template_local_docs
+    container_name: frame_template_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./frame_template:/app/frame_template:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
