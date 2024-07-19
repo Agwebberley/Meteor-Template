@@ -4,6 +4,7 @@
 from pathlib import Path
 
 import environ
+import frame
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # frame_template/
@@ -194,6 +195,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "frame_template.users.context_processors.allauth_settings",
+                "frame.context_processors.cfg_version",
             ],
         },
     },
@@ -288,3 +290,6 @@ SOCIALACCOUNT_FORMS = {"signup": "frame_template.users.forms.UserSocialSignupFor
 # Your stuff...
 # ------------------------------------------------------------------------------
 AWS_REGION = env("AWS_REGION", default="us-west-2")
+
+FRAME_VERSION = frame.__version__
+APP_VERSION = "0.1.0"
